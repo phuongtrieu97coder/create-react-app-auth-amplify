@@ -1,0 +1,38 @@
+@use "test2" as tst2;
+
+
+[id="navtop1_1"], [id="navtop1_2"]{
+   a{
+        &:hover{
+            @include tst2.rutygfgh-hover1;
+            
+        }
+
+    
+
+   }
+  
+}
+
+
+
+[id="navbottom_block"]{
+    border-top:5px double greenyellow;
+
+    [id="navbottom_block_1"] {
+       a{
+        font-weight:bold;
+        font-size:13px;
+        border-right:2px solid greenyellow;
+        padding:5px 10px;
+
+        &:hover{
+            text-decoration:none;
+        }
+       }
+    }
+}
+
+
+
+

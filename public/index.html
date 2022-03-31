@@ -19,12 +19,67 @@
       work correctly both with client-side routing and a non-root public URL.
       Learn how to configure a non-root public URL by running `npm run build`.
     -->
+
+
+    <meta name="keywords"  content="HTML,CSS,JAVASCRIPT,BOOSTRAP,W3CSS,
+    SASS,JQUERY,ANGULAR JS, REACT JS, PHP, MYSQL, NODE.JS, ASP.NET">
+
+
+    <meta name="description"   content="THIS IS THP Website">
+
+
+    <meta name="author"   content="PHUONG.TRIEU">
+
+    
+
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script> 
+
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular-route.js"></script>
+    
+
+    <script src="https://cdn.plot.ly/plotly-2.8.3.min.js"></script>
+
+
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+
+<script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+
+
+
     <title>React App</title>
   </head>
-  <body>
+  <body ng-app="app1" ng-controller="app1_controller1">
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+
+    <div id="block1"></div>
+
+
+    <div id="block2"></div>
+
+
+    <test1  data1="car_list1" 
+    style="width:500px;height:500px;"></test1>
+ 
+
+
     <div id="root"></div>
     <!--
       This HTML file is a template.
@@ -36,5 +91,76 @@
       To begin the development, run `npm start` or `yarn start`.
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
+
+
+    <footer id="footer_block"></footer>
+
+    <script>
+      var jq1 =$.noConflict();
+      jq1(document).ready(function($){
+          $("body").css("background-color","black");
+           $("[id='navtop1']").css({
+             "position":"fixed",
+             "top":"0","z-index":"3",
+             "background-color":"black",
+             "width":"100%"
+           })
+
+           var index1 = 0;
+      slideshow_block1_func();
+      
+      function slideshow_block1_func(){
+        var get_slideshow_block1_img_class = document.getElementsByClassName("Slideshow_block1_img");
+        var i;
+        for(i = 0;i<get_slideshow_block1_img_class.length;i++){
+          get_slideshow_block1_img_class[i].style.display = "none";
+        }
+        index1++;
+        if(index1>get_slideshow_block1_img_class.length){index1 = 1};
+        get_slideshow_block1_img_class[index1-1].style.display = "block";
+        setTimeout(slideshow_block1_func,3000);
+      }
+
+         
+      });
+
+
+     
+    
+ 
+ var app1 = angular.module("app1",[]);
+ app1.controller("app1_controller1",function($scope,$http){
+      $http({
+             method:"GET",
+             url:"car_list.json",
+      }).then(
+             function successs(response){
+             $scope.car_list1 = response.data;
+             },
+             function error(response){
+                    $scope.error_message = "There was an error loading data from your file!!!";
+                    console.log(response.status);
+                    console.log(response.statusText);
+             }
+      
+      );
+       
+                          
+      
+ });
+ app1.directive("test1",function(){
+      return {
+             restrict:"E",
+             scope:{
+                  data1: "=",
+                  data2: "="
+             },
+             templateUrl:"index2.html"
+      }
+ });
+  
+
+
+    </script>
   </body>
 </html>
