@@ -29,14 +29,14 @@
     
                   
       <div class="row">
-                <div class="order_block" ng-repeat="item1 in data1.car_list1" 
+                <div class="order_block" ng-repeat="caritem in cardata1.car_list1" 
                   style="border:4px solid yellowgreen;width:500px;
                   background-color:black;margin:40px;
                   box-shadow:2px 2px 8px 8px rgb(0, 238, 255),-2px -2px 8px 8px rgb(0, 238, 255)">     
                                
-                               <img ng-src="{{item1.image}}" width="100%" height="400px">
+                               <img ng-src="{{caritem.image}}" width="100%" height="400px">
                                <div style="border-top:5px double green;font-size:30px;background-color:white">
-                                   <b>{{item1.title}}</b>
+                                   <b>{{caritem.title}}</b>
                                </div>
                   </div>
       </div>
