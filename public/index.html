@@ -64,10 +64,12 @@
 
     <title>React App</title>
   </head>
-  <body ng-app="awsthpapp1" ng-controller="awsthpapp1controller1">
+  <body>
     <noscript>
       You need to enable JavaScript to run this app.
     </noscript>
+
+    <main ng-app="awsthpapp1">
 
     <div id="block1"></div>
 
@@ -75,8 +77,12 @@
     <div id="block2"></div>
 
 
-    <carinfoblock  cardata1="car_list1" 
-    style="width:500px;height:500px;"></carinfoblock>
+    <div id="block3" ng-controller="awsthpapp1controller1">
+
+      <carinfoblock  cardata1="car_list1" 
+      style="width:500px;height:500px;"></carinfoblock>
+
+    </div>
  
 
 
@@ -95,74 +101,80 @@
 
     <footer id="footer_block"></footer>
 
-   
+    </main>
+
+
+
+
+    <script>
+      var jq1 =$.noConflict();
+      jq1(document).ready(function($){
+          $("body").css("background-color","black");
+           $("[id='navtop1']").css({
+             "position":"fixed",
+             "top":"0","z-index":"3",
+             "background-color":"black",
+             "width":"100%"
+           })
+  
+           var index1 = 0;
+      slideshow_block1_func();
+      
+      function slideshow_block1_func(){
+        var get_slideshow_block1_img_class = document.getElementsByClassName("Slideshow_block1_img");
+        var i;
+        for(i = 0;i<get_slideshow_block1_img_class.length;i++){
+          get_slideshow_block1_img_class[i].style.display = "none";
+        }
+        index1++;
+        if(index1>get_slideshow_block1_img_class.length){index1 = 1};
+        get_slideshow_block1_img_class[index1-1].style.display = "block";
+        setTimeout(slideshow_block1_func,3000);
+      }
+  
+         
+      });
+  
+  
+     
+    
+  
+  var awsthpapp1var = angular.module("awsthpapp1",[]);
+  awsthpapp1var.controller("awsthpapp1controller1",function($scope,$http){
+      $http({
+             method:"GET",
+             url:"car_list.json",
+      }).then(
+             function successs(response){
+             $scope.car_list1 = response.data;
+             },
+             function error(response){
+                    $scope.error_message = "There was an error loading data from your file!!!";
+                    console.log(response.status);
+                    console.log(response.statusText);
+             }
+      
+      );
+       
+                          
+      
+  });
+  awsthpapp1var.directive("carinfoblock",function(){
+      return {
+             restrict:"E",
+             scope:{
+                  cardata1: "="
+             },
+             templateUrl:"index2.html"
+      }
+  });
+  
+  
+  
+    </script>
+
   </body>
 
 
-  <script>
-    var jq1 =$.noConflict();
-    jq1(document).ready(function($){
-        $("body").css("background-color","black");
-         $("[id='navtop1']").css({
-           "position":"fixed",
-           "top":"0","z-index":"3",
-           "background-color":"black",
-           "width":"100%"
-         })
-
-         var index1 = 0;
-    slideshow_block1_func();
-    
-    function slideshow_block1_func(){
-      var get_slideshow_block1_img_class = document.getElementsByClassName("Slideshow_block1_img");
-      var i;
-      for(i = 0;i<get_slideshow_block1_img_class.length;i++){
-        get_slideshow_block1_img_class[i].style.display = "none";
-      }
-      index1++;
-      if(index1>get_slideshow_block1_img_class.length){index1 = 1};
-      get_slideshow_block1_img_class[index1-1].style.display = "block";
-      setTimeout(slideshow_block1_func,3000);
-    }
-
-       
-    });
-
-
-   
   
-
-var awsthpapp1var = angular.module("awsthpapp1",[]);
-awsthpapp1var.controller("awsthpapp1controller1",function($scope,$http){
-    $http({
-           method:"GET",
-           url:"car_list.json",
-    }).then(
-           function successs(response){
-           $scope.car_list1 = response.data;
-           },
-           function error(response){
-                  $scope.error_message = "There was an error loading data from your file!!!";
-                  console.log(response.status);
-                  console.log(response.statusText);
-           }
-    
-    );
-     
-                        
-    
-});
-awsthpapp1var.directive("carinfoblock",function(){
-    return {
-           restrict:"E",
-           scope:{
-                cardata1: "="
-           },
-           templateUrl:"index2.html"
-    }
-});
-
-
-
-  </script>
 </html>
