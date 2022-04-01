@@ -5,6 +5,7 @@ import "./test1.scss";
 import {Slideshow_block1} from "./slideshow1.js";
 
 
+
 function Navtop(){
     return (
         <>
@@ -161,7 +162,9 @@ function Navbottom(){
 }
 
 
+
 ReactDOM.render(<Navbottom/>,document.getElementById("footer_block"));
+
 
 
 

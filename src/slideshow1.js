@@ -4,12 +4,8 @@ import Car_wlp3 from "./image/car/car_wallpaper2.jpg";
 import Car_wlp4 from "./image/car/car_wallpaper3.jpg";
 
 function Slideshow_block1_output1(props){
-    return (
-        
-                <img className="Slideshow_block1_img" alt="car info" src={props.car}
-                 width="100%" height="500px"/>
-        
-    )
+    return  <img className="Slideshow_block1_img" alt="car info" src={props.car}
+    width="100%" height="500px"/>
 }
 
 function Slideshow_block1(){
@@ -26,5 +22,12 @@ function Slideshow_block1(){
     )
 
 }
+
+
+
+    
+  
+
+
 
 export {Slideshow_block1};
